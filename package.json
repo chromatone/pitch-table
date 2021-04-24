@@ -1,0 +1,25 @@
+{
+  "name": "pitch-table",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "tone": "^14.7.77",
+    "vue": "^3.0.5"
+  },
+  "devDependencies": {
+    "@iconify/json": "^1.1.333",
+    "@vitejs/plugin-vue": "^1.2.1",
+    "@vue/compiler-sfc": "^3.0.5",
+    "pug": "^3.0.2",
+    "vite": "^2.1.5",
+    "vite-aliases": "^0.6.2",
+    "vite-plugin-components": "0.8.4",
+    "vite-plugin-icons": "^0.5.0",
+    "vite-plugin-voie": "^0.7.3",
+    "vite-plugin-windicss": "^0.15.7"
+  }
+}
