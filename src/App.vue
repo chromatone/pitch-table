@@ -1,22 +1,13 @@
 <template lang="pug">
-.flex.flex-col.w-full.flex-auto
-  control
-  .flex(v-for="octave in octaves", :key="octave")
-    table-cell(v-for="note in notes", :key="note.name", :note="note", :octave="octave") 
+.flex
+  .flex.flex-col.w-full.flex-auto
+    control
+    note-table
+  .scroll-bar 
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { notes } from '@store/theory.js'
-const octaveRange = [-6, 9];
 
-const octaves = computed(() => {
-  let octaves = [];
-  for (let i = octaveRange[1]; i >= octaveRange[0]; i--) {
-    octaves.push(i)
-  }
-  return octaves
-});
 </script>
 
 <style>
@@ -24,5 +15,16 @@ const octaves = computed(() => {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.scroll-bar {
+  @apply min-w-6;
+  background-color: #eee;
+  background-image: linear-gradient(
+    0deg,
+    transparent 80%,
+    hsla(0, 0%, 0%, 0.2) 20%
+  );
+  background-size: 20px 4px;
 }
 </style>

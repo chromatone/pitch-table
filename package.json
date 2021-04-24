@@ -7,16 +7,18 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@vueform/slider": "^1.0.5",
     "@vueuse/gesture": "^1.0.0",
-    "tone": "^14.7.77",
-    "vue": "^3.0.5"
+    "tone": "^14.8.17",
+    "unmute-ios-audio": "^3.3.0",
+    "vue": "^3.0.11"
   },
   "devDependencies": {
     "@iconify/json": "^1.1.333",
-    "@vitejs/plugin-vue": "^1.2.1",
-    "@vue/compiler-sfc": "^3.0.5",
+    "@vitejs/plugin-vue": "^1.2.2",
+    "@vue/compiler-sfc": "^3.0.11",
     "pug": "^3.0.2",
-    "vite": "^2.1.5",
+    "vite": "^2.2.2",
     "vite-aliases": "^0.6.2",
     "vite-plugin-components": "0.8.4",
     "vite-plugin-icons": "^0.5.0",

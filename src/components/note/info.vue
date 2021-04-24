@@ -1,5 +1,6 @@
 <template lang="pug">
-.flex.flex-col.text-xs.p-1(v-if="state.show.hz || state.show.bpm")
+.flex.flex-col.text-xs.p-1(v-if="state.show.hz || state.show.bpm || state.show.letters")
+  .text-xl.font-bold.px-1(v-if="state.show.letters") {{ name }} 
   .flex(v-if="state.show.hz") {{ round(hz) }}hz
   .flex(v-if="state.show.bpm") {{ round(bpm) }}BPM
 </template>
@@ -8,6 +9,10 @@
 import { defineProps, computed } from 'vue'
 import { state } from '@store/state'
 const props = defineProps({
+  name: {
+    type: String,
+    default: 'A'
+  },
   hz: {
     type: Number,
     default: 440

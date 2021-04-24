@@ -1,15 +1,13 @@
 <template lang="pug">
 .cell(
   v-drag="dragHandler",
-  :drag-options=`{
-    filterTaps: true
-  }`,
+  :drag-options="dragOptions",
   :style=`{
     backgroundColor: color,
     color: textColor
   }`, 
   :class="{ active }")
-  .absolute.w-full.h-full.top-0.left-0.bottom-0
+  .absolute.w-full.h-full.top-0.left-0.bottom-0(v-show="voice.vol > 0")
     .absolute.border-t.bg-gray-700.bg-opacity-50.w-full.bottom-0(
       :style="{ height: voice.vol + '%' }"
     ) 
@@ -17,13 +15,13 @@
     .pan.absolute.bg-gray-100.bg-opacity-50.h-full.m-auto(
       :style="{ left: voice.pan + '%' }"
     ) 
-  .letter.text-xl.font-bold.px-1(v-if="state.show.letters") {{ note.name }} 
-  table-frequency(:hz="voice.freq", :octave="octave")
+
+  note-info(:name="note.name",:hz="voice.freq", :octave="octave")
 </template>
 
 <script setup>
 import { defineProps, computed, ref, reactive, watch } from 'vue'
-import { Oscillator, context, gainToDb, PanVol } from 'tone'
+import { Oscillator, gainToDb, PanVol } from 'tone'
 import { state } from '@store/state.js'
 import { calcFreq } from '@composables/calculations.js'
 const props = defineProps({
@@ -54,7 +52,6 @@ watch(() => voice.vol, (vol) => {
 
 watch(() => voice.pan, (pan) => {
   let place = ((pan - 50) / 100) * 2
-  console.log(place)
   panVol.pan.targetRampTo(place)
 })
 
@@ -62,12 +59,18 @@ const active = computed(() => {
   return voice.vol > 0
 })
 
-const dragHandler = (dragEvent) => {
-  let { movement: [x, y], dragging, tap } = dragEvent
-
-  if (context.state == "suspended") {
-    context.resume();
+const dragOptions = reactive({
+  filterTaps: true,
+  preventWindowScrollY: true,
+  delay: 0,
+  eventOptions: {
+    passive: false
   }
+})
+
+const dragHandler = (dragEvent) => {
+  dragEvent.event.preventDefault()
+  let { movement: [x, y], dragging, tap } = dragEvent
   if (!voice.started) {
     osc.start()
     voice.started = true
@@ -115,7 +118,7 @@ const textColor = computed(() => {
 
 <style  scoped>
 .cell {
-  @apply relative border border flex flex-col p-1 flex-1 cursor-pointer select-none opacity-70 hover:opacity-100;
+  @apply relative  flex flex-col p-1 flex-1 cursor-pointer select-none opacity-70 hover:opacity-100;
   transition: all 100ms ease;
   min-width: 2em;
   min-height: 2em;

@@ -2,35 +2,39 @@ lockfileVersion: 5.3
 
 specifiers:
   '@iconify/json': ^1.1.333
-  '@vitejs/plugin-vue': ^1.2.1
-  '@vue/compiler-sfc': ^3.0.5
+  '@vitejs/plugin-vue': ^1.2.2
+  '@vue/compiler-sfc': ^3.0.11
+  '@vueform/slider': ^1.0.5
   '@vueuse/gesture': ^1.0.0
   pug: ^3.0.2
-  tone: ^14.7.77
-  vite: ^2.1.5
+  tone: ^14.8.17
+  unmute-ios-audio: ^3.3.0
+  vite: ^2.2.2
   vite-aliases: ^0.6.2
   vite-plugin-components: 0.8.4
   vite-plugin-icons: ^0.5.0
   vite-plugin-voie: ^0.7.3
   vite-plugin-windicss: ^0.15.7
-  vue: ^3.0.5
+  vue: ^3.0.11
 
 dependencies:
+  '@vueform/slider': 1.0.5
   '@vueuse/gesture': 1.0.0_vue@3.0.11
-  tone: 14.7.77
+  tone: 14.8.17
+  unmute-ios-audio: 3.3.0
   vue: 3.0.11
 
 devDependencies:
   '@iconify/json': 1.1.333
-  '@vitejs/plugin-vue': 1.2.1_@vue+compiler-sfc@3.0.11
+  '@vitejs/plugin-vue': 1.2.2_@vue+compiler-sfc@3.0.11
   '@vue/compiler-sfc': 3.0.11_vue@3.0.11
   pug: 3.0.2
-  vite: 2.2.1
+  vite: 2.2.2
   vite-aliases: 0.6.2
-  vite-plugin-components: 0.8.4_vite@2.2.1
+  vite-plugin-components: 0.8.4_vite@2.2.2
   vite-plugin-icons: 0.5.0_20009d0eddc2c90b363bf36479e3ca7d
-  vite-plugin-voie: 0.7.3_vite@2.2.1+vue@3.0.11
-  vite-plugin-windicss: 0.15.7_vite@2.2.1
+  vite-plugin-voie: 0.7.3_vite@2.2.2+vue@3.0.11
+  vite-plugin-windicss: 0.15.7_vite@2.2.2
 
 packages:
 
@@ -83,8 +87,8 @@ packages:
       fastq: 1.11.0
     dev: true
 
-  /@vitejs/plugin-vue/1.2.1_@vue+compiler-sfc@3.0.11:
-    resolution: {integrity: sha512-TG+LbEUNwfFrx1VyN+iq+PsiGd9MT16hUdJY+BnMXj3MrLAF8m3VYUspTDM3aXoh48YDmAkMjG4gWFRg3lbG5A==}
+  /@vitejs/plugin-vue/1.2.2_@vue+compiler-sfc@3.0.11:
+    resolution: {integrity: sha512-5BI2WFfs/Z0pAV4S/IQf1oH3bmFYlL5ATMBHgTt1Lf7hAnfpNd5oUAAs6hZPfk3QhvyUQgtk0rJBlabwNFcBJQ==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       '@vue/compiler-sfc': ^3.0.6
@@ -161,6 +165,13 @@ packages:
 
   /@vue/shared/3.0.11:
     resolution: {integrity: sha512-b+zB8A2so8eCE0JsxjL24J7vdGl8rzPQ09hZNhystm+KqSbKcAej1A+Hbva1rCMmTTqA+hFnUSDc5kouEo0JzA==}
+
+  /@vueform/slider/1.0.5:
+    resolution: {integrity: sha512-a9qzQxyXk4JEYuZtbwyez4cZLlmX6F41vNhsEpfL1zr86+QDd0ND//z8vJaOp34dOm9YUHpNjb8qE/hDgzTZig==}
+    dependencies:
+      nouislider: 14.7.0
+      wnumb: 1.2.0
+    dev: false
 
   /@vueuse/gesture/1.0.0_vue@3.0.11:
     resolution: {integrity: sha512-RKCYGmh1F8SGO00JGssDfVbeUz+HSkwUfhfN9gyI7LnARmKTnMTUaIuO4lJHOwOPTWwnmK857CPsdXX6NkUUAA==}
@@ -656,6 +667,10 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /nouislider/14.7.0:
+    resolution: {integrity: sha512-4RtQ1+LHJKesDCNJrXkQcwXAWCrC2aggdLYMstS/G5fEWL+fXZbUA9pwVNHFghMGuFGRATlDLNInRaPeRKzpFQ==}
+    dev: false
+
   /object-assign/4.1.1:
     resolution: {integrity: sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=}
     engines: {node: '>=0.10.0'}
@@ -972,8 +987,8 @@ packages:
     resolution: {integrity: sha1-zCAOqyYT9BZtJ/+a/HylbUnfbrQ=}
     dev: true
 
-  /tone/14.7.77:
-    resolution: {integrity: sha512-tCfK73IkLHyzoKUvGq47gyDyxiKLFvKiVCOobynGgBB9Dl0NkxTM2p+eRJXyCYrjJwy9Y0XCMqD3uOYsYt2Fdg==}
+  /tone/14.8.17:
+    resolution: {integrity: sha512-xdn0FDWo0U4jEkZcZDDS028DA+/XVdW4q3i9ttTq/C8lqGsDPV+Bcd2/+o0jJgGzQkntaCOaI/NeQ4RdBkg3IQ==}
     dependencies:
       standardized-audio-context: 25.1.15
       tslib: 2.2.0
@@ -985,6 +1000,10 @@ packages:
 
   /tslib/2.2.0:
     resolution: {integrity: sha512-gS9GVHRU+RGn5KQM2rllAlR3dU6m7AcpJKdtH8gFvQiC4Otgk98XnmMU+nZenHt/+VhnBPWwgrJsyrdcw6i23w==}
+    dev: false
+
+  /unmute-ios-audio/3.3.0:
+    resolution: {integrity: sha512-MmoCOrsS2gn3wLT2tT+hF56Q4V4kksIKn2LHrwAtX6umzQwQHDWSh1slMzH+0WuxTZ62s3w8/wsfIII1FQ7ACg==}
     dev: false
 
   /util-deprecate/1.0.2:
@@ -999,7 +1018,7 @@ packages:
       vite: 2.2.1
     dev: true
 
-  /vite-plugin-components/0.8.4_vite@2.2.1:
+  /vite-plugin-components/0.8.4_vite@2.2.2:
     resolution: {integrity: sha512-h6/FNBKBXc4TIcHxnFYxa4+aBGDZusqp/6Ra3LBvwolwFuX6k8qPsBbXkBP0I+UwOkyHw9iU2xJ4rdYBGyN+0Q==}
     peerDependencies:
       vite: ^2.0.0-beta.69
@@ -1008,7 +1027,7 @@ packages:
       debug: 4.3.2
       fast-glob: 3.2.5
       minimatch: 3.0.4
-      vite: 2.2.1
+      vite: 2.2.2
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1026,7 +1045,7 @@ packages:
       vue-template-es2015-compiler: 1.9.1
     dev: true
 
-  /vite-plugin-voie/0.7.3_vite@2.2.1+vue@3.0.11:
+  /vite-plugin-voie/0.7.3_vite@2.2.2+vue@3.0.11:
     resolution: {integrity: sha512-OwAwziXPb8ywKHXfd9E1UXsEF2rRi4Dgb3F020s2lLWdtuY84xQH4JK84XwytFeht3TsexmJpVPHg2y17QdltQ==}
     peerDependencies:
       vite: ^2.0.0-beta.3
@@ -1034,13 +1053,13 @@ packages:
     dependencies:
       fast-glob: 3.2.5
       glob-to-regexp: 0.4.1
-      vite: 2.2.1
+      vite: 2.2.2
       voie-pages: 0.4.0_vue@3.0.11
     transitivePeerDependencies:
       - vue
     dev: true
 
-  /vite-plugin-windicss/0.15.7_vite@2.2.1:
+  /vite-plugin-windicss/0.15.7_vite@2.2.2:
     resolution: {integrity: sha512-RYASJYA6l2p3MgQ6M6GU44zP0iC5cBkuTJhhrmHaRREleL9fNpblBwdS0lbvcr5Q4LT6AGpmmTlF50iIwo3JkQ==}
     peerDependencies:
       vite: ^2.0.1
@@ -1048,7 +1067,7 @@ packages:
       '@windicss/plugin-utils': 0.15.7
       chalk: 4.1.1
       debug: 4.3.2
-      vite: 2.2.1
+      vite: 2.2.2
       windicss: 2.5.14
     transitivePeerDependencies:
       - supports-color
@@ -1056,6 +1075,19 @@ packages:
 
   /vite/2.2.1:
     resolution: {integrity: sha512-KIqK90EoJJpuqE86Y9DSkZjFNGgsyZX/4I1xENIitLRd3hgRtOlIGCJYrNnBD9/eqipz0OroAiIj9/R1JcOdFA==}
+    engines: {node: '>=12.0.0'}
+    hasBin: true
+    dependencies:
+      esbuild: 0.9.7
+      postcss: 8.2.12
+      resolve: 1.20.0
+      rollup: 2.45.2
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
+  /vite/2.2.2:
+    resolution: {integrity: sha512-Y0IMdu+YuKsisJPk6NaEwEQC7FFfLQSN97ZTE4gvrELrk8dGjTFslhNCG8wkdzMSLCzfOdpCMT8cPXAhqzkPfg==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
@@ -1129,6 +1161,10 @@ packages:
       assert-never: 1.2.1
       babel-walk: 3.0.0-canary-5
     dev: true
+
+  /wnumb/1.2.0:
+    resolution: {integrity: sha512-eYut5K/dW7usfk/Mwm6nxBNoTPp/uP7PlXld+hhg7lDtHLdHFnNclywGYM9BRC7Ohd4JhwuHg+vmOUGfd3NhVA==}
+    dev: false
 
   /wrappy/1.0.2:
     resolution: {integrity: sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=}
