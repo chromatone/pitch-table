@@ -13,17 +13,19 @@
     .absolute.border-t.bg-gray-700.bg-opacity-50.w-full.bottom-0(
       :style="{ height: voice.vol + '%' }"
     ) 
-  .absolute.h-full.top-0.left-0.right-0.text-center
+  .absolute.h-full.top-0.left-0.right-0.text-center(v-show="voice.pan != 50")
     .pan.absolute.bg-gray-100.bg-opacity-50.h-full.m-auto(
       :style="{ left: voice.pan + '%' }"
     ) 
-  .letter.text-xl.px-1(v-if="state.show.letters") {{ note.name }}
-  table-frequency(:pitch="note.pitch", :octave="octave")
+  .letter.text-xl.font-bold.px-1(v-if="state.show.letters") {{ note.name }} 
+  table-frequency(:hz="voice.freq", :octave="octave")
 </template>
 
 <script setup>
-import { defineProps, computed, ref, reactive } from 'vue'
+import { defineProps, computed, ref, reactive, watch } from 'vue'
+import { Oscillator, context, gainToDb, PanVol } from 'tone'
 import { state } from '@store/state.js'
+import { calcFreq } from '@composables/calculations.js'
 const props = defineProps({
   note: Object,
   octave: {
@@ -32,9 +34,28 @@ const props = defineProps({
   }
 });
 
+const panVol = new PanVol(0, -Infinity).toDestination()
+const osc = new Oscillator(440, 'sawtooth').connect(panVol)
+
 const voice = reactive({
   vol: 0,
   pan: 50,
+  started: false,
+  freq: computed(() => {
+    let freq = calcFreq(props.note.pitch, props.octave)
+    osc.frequency.value = freq
+    return freq
+  })
+})
+
+watch(() => voice.vol, (vol) => {
+  panVol.volume.targetRampTo(gainToDb(vol * .4 / 100))
+})
+
+watch(() => voice.pan, (pan) => {
+  let place = ((pan - 50) / 100) * 2
+  console.log(place)
+  panVol.pan.targetRampTo(place)
 })
 
 const active = computed(() => {
@@ -43,6 +64,14 @@ const active = computed(() => {
 
 const dragHandler = (dragEvent) => {
   let { movement: [x, y], dragging, tap } = dragEvent
+
+  if (context.state == "suspended") {
+    context.resume();
+  }
+  if (!voice.started) {
+    osc.start()
+    voice.started = true
+  }
   if (!tap) {
     voice.vol += -y / 20
     if (voice.vol > 100) voice.vol = 100
@@ -58,28 +87,27 @@ const dragHandler = (dragEvent) => {
   }
 }
 
-
 const color = computed(() => {
   return (
     "hsla(" +
     props.note.pitch * 30 +
     "," +
-    (active.value ? "100" : "75") +
+    (active.value ? "100" : "25") +
     "%," +
     Math.abs(props.octave + 2) * 8 +
     "%)"
   );
 })
 
-
 const textColor = computed(() => {
-  // here's a better algo https://codepen.io/cferdinandi/pen/Yomroj
+  // here's a nice algo for HEX colors https://codepen.io/cferdinandi/pen/Yomroj 
   if (Math.abs(props.octave + 2) * 8 > 40) {
     return "hsla(0,0%,0%," + (active.value ? "1" : "0.8") + ")";
   } else {
     return "hsla(0,0%,100%," + (active.value ? "1" : "0.8") + ")";
   }
-})
+});
+
 
 
 
@@ -87,7 +115,7 @@ const textColor = computed(() => {
 
 <style  scoped>
 .cell {
-  @apply relative border border flex flex-col py-4 flex-1 cursor-pointer select-none opacity-50 hover:opacity-100;
+  @apply relative border border flex flex-col p-1 flex-1 cursor-pointer select-none opacity-70 hover:opacity-100;
   transition: all 100ms ease;
   min-width: 2em;
   min-height: 2em;

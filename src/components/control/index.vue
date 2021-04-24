@@ -1,5 +1,6 @@
 <template lang="pug">
 .flex.p-4
+  .p-4.mr-2.bg-green-300(@click="start()") START
   control-switch(
     label="letters",
     :state="state.show.letters",
@@ -7,8 +8,8 @@
   )
   control-switch(
     label="FREQ",
-    :state="state.show.frequency",
-    @click="state.show.frequency = !state.show.frequency"
+    :state="state.show.hz",
+    @click="state.show.hz = !state.show.hz"
   )
   control-switch(
     label="BPM",
@@ -19,6 +20,9 @@
 
 <script setup>
 import { state } from '@store/state.js'
+import { start } from 'tone'
+
+
 </script>
 
 <style  scoped>
