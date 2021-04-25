@@ -99,11 +99,11 @@ const dragHandler = (dragEvent) => {
     if (voice.pan > 100) voice.pan = 100
     if (voice.pan < 0) voice.pan = 0
   } else {
-    if (active) {
+    if (active.value) {
       voice.vol = 0;
       voice.pan = 50
     } else {
-      synth.triggerAttackRelease(voice.freq)
+      voice.vol = 50
     }
 
   }
