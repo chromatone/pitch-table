@@ -1,6 +1,6 @@
 ## Chromatone: pitch table
 
-A table of pitches.
+A table of playable pitches. Build with vite, vue 3, windicss and tone.js. Works in any desktop browser. Probably will work on mobile somehow. 😅
 
 ![](screen.png)
 
