@@ -10,4 +10,11 @@ A table of pitches.
 - Performace:
   - [ ] fix: too slow render
   - [ ] fix: noisy tones
-- 
+- Features:
+  - [ ] Synth controls
+    - [ ] waveform
+    - [ ] filter
+    - [ ] ADSR
+  - [ ] Scroll controls (?)
+  - [ ] Intonation
+  - [ ] A4 freq
