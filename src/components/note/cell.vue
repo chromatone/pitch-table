@@ -6,24 +6,26 @@
     backgroundColor: color,
     color: textColor
   }`, 
-  :class="{ active }")
-  .absolute.w-full.h-full.top-0.left-0.bottom-0(v-show="voice.vol > 0")
+  :class="{ active: synth.active }")
+  .absolute.w-full.h-full.top-0.left-0.bottom-0(v-show="synth.vol > 0")
     .absolute.border-t.bg-gray-700.bg-opacity-50.w-full.bottom-0(
-      :style="{ height: voice.vol + '%' }"
+      :style="{ height: synth.vol + '%' }"
     ) 
-  .absolute.h-full.top-0.left-0.right-0.text-center(v-show="voice.pan != 50")
+  .absolute.h-full.top-0.left-0.right-0.text-center(v-show="synth.pan != 50")
     .pan.absolute.bg-gray-100.bg-opacity-50.h-full.m-auto(
-      :style="{ left: voice.pan + '%' }"
+      :style="{ left: synth.pan + '%' }"
     ) 
 
-  note-info(:name="note.name",:hz="voice.freq", :octave="octave")
+  note-info(:name="note.name",:hz="synth.freq", :octave="octave")
 </template>
 
 <script setup>
 import { defineProps, computed, ref, reactive, watch } from 'vue'
-import { Oscillator, gainToDb, PanVol, MonoSynth } from 'tone'
+import { Oscillator, context, start, gainToDb, PanVol, MonoSynth } from 'tone'
 import { state } from '@store/state.js'
 import { calcFreq } from '@composables/calculations.js'
+import { useSynth } from '@composables/synth.js'
+
 const props = defineProps({
   note: Object,
   octave: {
@@ -32,51 +34,7 @@ const props = defineProps({
   }
 });
 
-
-
-const panVol = new PanVol(0, -Infinity).toDestination()
-const synth = new MonoSynth({
-  oscillator: {
-    type: 'sawtooth',
-  },
-  envelope: {
-    attack: 0.1
-  }
-}).connect(panVol)
-
-const voice = reactive({
-  vol: 0,
-  pan: 50,
-  started: false,
-  freq: computed(() => {
-    let freq = calcFreq(props.note.pitch, props.octave)
-    synth.oscillator.frequency.value = freq
-    return freq
-  })
-})
-
-watch(() => voice.vol, (vol) => {
-  panVol.volume.targetRampTo(gainToDb(vol * .4 / 100))
-})
-
-watch(() => voice.pan, (pan) => {
-  let place = ((pan - 50) / 100) * 2
-  panVol.pan.targetRampTo(place)
-
-})
-
-const active = computed(() => {
-  return voice.vol > 0
-})
-
-watch(() => active.value, (act) => {
-  if (act) {
-    console.log(act)
-    synth.triggerAttack(voice.freq)
-  } else {
-    synth.triggerRelease()
-  }
-})
+const synth = useSynth(props.note.pitch, props.octave);
 
 const dragOptions = reactive({
   filterTaps: true,
@@ -88,22 +46,25 @@ const dragOptions = reactive({
 })
 
 const dragHandler = (dragEvent) => {
+  if (context.state == 'suspended') {
+    start()
+  }
   let { movement: [x, y], dragging, tap } = dragEvent
   if (!tap) {
-    voice.vol += -y / 20
-    if (voice.vol > 100) voice.vol = 100
-    if (voice.vol < 0) voice.vol = 0
+    synth.vol += -y / 20
+    if (synth.vol > 100) synth.vol = 100
+    if (synth.vol < 0) synth.vol = 0
 
-    voice.pan += x / 20
+    synth.pan += x / 20
 
-    if (voice.pan > 100) voice.pan = 100
-    if (voice.pan < 0) voice.pan = 0
+    if (synth.pan > 100) synth.pan = 100
+    if (synth.pan < 0) synth.pan = 0
   } else {
-    if (active.value) {
-      voice.vol = 0;
-      voice.pan = 50
+    if (synth.active) {
+      synth.vol = 0;
+      synth.pan = 50
     } else {
-      voice.vol = 50
+      synth.vol = 50
     }
 
   }
@@ -114,7 +75,7 @@ const color = computed(() => {
     "hsla(" +
     props.note.pitch * 30 +
     "," +
-    (active.value ? "100" : "25") +
+    (synth.active ? "100" : "25") +
     "%," +
     Math.abs(props.octave + 2) * 8 +
     "%)"
@@ -124,9 +85,9 @@ const color = computed(() => {
 const textColor = computed(() => {
   // here's a nice algo for HEX colors https://codepen.io/cferdinandi/pen/Yomroj 
   if (Math.abs(props.octave + 2) * 8 > 40) {
-    return "hsla(0,0%,0%," + (active.value ? "1" : "0.8") + ")";
+    return "hsla(0,0%,0%," + (synth.active ? "1" : "0.8") + ")";
   } else {
-    return "hsla(0,0%,100%," + (active.value ? "1" : "0.8") + ")";
+    return "hsla(0,0%,100%," + (synth.active ? "1" : "0.8") + ")";
   }
 });
 
