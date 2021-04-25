@@ -1,7 +1,8 @@
 <template lang="pug">
 .flex
   .flex.flex-col.w-full.flex-auto
-    control
+    header-row
+    control-row
     note-table
   .scroll-bar 
 </template>
