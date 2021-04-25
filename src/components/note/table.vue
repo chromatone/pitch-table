@@ -1,7 +1,9 @@
 <template lang="pug">
 .flex.flex-col
-  .flex(v-for="octave in state.octaves", :key="octave")
+  note-shift(:top="true")
+  .flex(v-for="octave in state.octave.list", :key="octave")
     note-cell(v-for="note in notes", :key="note.name", :note="note", :octave="octave") 
+  note-shift
 </template>
 
 <script setup>

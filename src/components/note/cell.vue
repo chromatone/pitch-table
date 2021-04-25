@@ -21,7 +21,7 @@
 
 <script setup>
 import { defineProps, computed, ref, reactive, watch } from 'vue'
-import { Oscillator, gainToDb, PanVol } from 'tone'
+import { Oscillator, gainToDb, PanVol, MonoSynth } from 'tone'
 import { state } from '@store/state.js'
 import { calcFreq } from '@composables/calculations.js'
 const props = defineProps({
@@ -32,8 +32,17 @@ const props = defineProps({
   }
 });
 
+
+
 const panVol = new PanVol(0, -Infinity).toDestination()
-const osc = new Oscillator(440, 'sawtooth').connect(panVol)
+const synth = new MonoSynth({
+  oscillator: {
+    type: 'sawtooth',
+  },
+  envelope: {
+    attack: 0.1
+  }
+}).connect(panVol)
 
 const voice = reactive({
   vol: 0,
@@ -41,7 +50,7 @@ const voice = reactive({
   started: false,
   freq: computed(() => {
     let freq = calcFreq(props.note.pitch, props.octave)
-    osc.frequency.value = freq
+    synth.oscillator.frequency.value = freq
     return freq
   })
 })
@@ -53,10 +62,20 @@ watch(() => voice.vol, (vol) => {
 watch(() => voice.pan, (pan) => {
   let place = ((pan - 50) / 100) * 2
   panVol.pan.targetRampTo(place)
+
 })
 
 const active = computed(() => {
   return voice.vol > 0
+})
+
+watch(() => active.value, (act) => {
+  if (act) {
+    console.log(act)
+    synth.triggerAttack(voice.freq)
+  } else {
+    synth.triggerRelease()
+  }
 })
 
 const dragOptions = reactive({
@@ -69,12 +88,7 @@ const dragOptions = reactive({
 })
 
 const dragHandler = (dragEvent) => {
-  dragEvent.event.preventDefault()
   let { movement: [x, y], dragging, tap } = dragEvent
-  if (!voice.started) {
-    osc.start()
-    voice.started = true
-  }
   if (!tap) {
     voice.vol += -y / 20
     if (voice.vol > 100) voice.vol = 100
@@ -85,8 +99,13 @@ const dragHandler = (dragEvent) => {
     if (voice.pan > 100) voice.pan = 100
     if (voice.pan < 0) voice.pan = 0
   } else {
-    voice.vol = 0;
-    voice.pan = 50
+    if (active) {
+      voice.vol = 0;
+      voice.pan = 50
+    } else {
+      synth.triggerAttackRelease(voice.freq)
+    }
+
   }
 }
 
@@ -111,19 +130,17 @@ const textColor = computed(() => {
   }
 });
 
-
-
-
 </script>
 
 <style  scoped>
 .cell {
-  @apply relative  flex flex-col p-1 flex-1 cursor-pointer select-none opacity-70 hover:opacity-100;
+  @apply relative flex flex-col p-1 flex-1 cursor-pointer select-none opacity-70 hover:opacity-100;
   transition: all 100ms ease;
   min-width: 2em;
-  min-height: 2em;
+  min-height: 4em;
 }
-.cell.active {
+.cell.active,
+.cell:active {
   @apply opacity-90;
 }
 

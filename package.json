@@ -7,7 +7,6 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@vueform/slider": "^1.0.5",
     "@vueuse/gesture": "^1.0.0",
     "tone": "^14.8.17",
     "unmute-ios-audio": "^3.3.0",

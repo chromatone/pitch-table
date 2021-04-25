@@ -4,7 +4,6 @@ specifiers:
   '@iconify/json': ^1.1.333
   '@vitejs/plugin-vue': ^1.2.2
   '@vue/compiler-sfc': ^3.0.11
-  '@vueform/slider': ^1.0.5
   '@vueuse/gesture': ^1.0.0
   pug: ^3.0.2
   tone: ^14.8.17
@@ -18,7 +17,6 @@ specifiers:
   vue: ^3.0.11
 
 dependencies:
-  '@vueform/slider': 1.0.5
   '@vueuse/gesture': 1.0.0_vue@3.0.11
   tone: 14.8.17
   unmute-ios-audio: 3.3.0
@@ -165,13 +163,6 @@ packages:
 
   /@vue/shared/3.0.11:
     resolution: {integrity: sha512-b+zB8A2so8eCE0JsxjL24J7vdGl8rzPQ09hZNhystm+KqSbKcAej1A+Hbva1rCMmTTqA+hFnUSDc5kouEo0JzA==}
-
-  /@vueform/slider/1.0.5:
-    resolution: {integrity: sha512-a9qzQxyXk4JEYuZtbwyez4cZLlmX6F41vNhsEpfL1zr86+QDd0ND//z8vJaOp34dOm9YUHpNjb8qE/hDgzTZig==}
-    dependencies:
-      nouislider: 14.7.0
-      wnumb: 1.2.0
-    dev: false
 
   /@vueuse/gesture/1.0.0_vue@3.0.11:
     resolution: {integrity: sha512-RKCYGmh1F8SGO00JGssDfVbeUz+HSkwUfhfN9gyI7LnARmKTnMTUaIuO4lJHOwOPTWwnmK857CPsdXX6NkUUAA==}
@@ -667,10 +658,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /nouislider/14.7.0:
-    resolution: {integrity: sha512-4RtQ1+LHJKesDCNJrXkQcwXAWCrC2aggdLYMstS/G5fEWL+fXZbUA9pwVNHFghMGuFGRATlDLNInRaPeRKzpFQ==}
-    dev: false
-
   /object-assign/4.1.1:
     resolution: {integrity: sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=}
     engines: {node: '>=0.10.0'}
@@ -1161,10 +1148,6 @@ packages:
       assert-never: 1.2.1
       babel-walk: 3.0.0-canary-5
     dev: true
-
-  /wnumb/1.2.0:
-    resolution: {integrity: sha512-eYut5K/dW7usfk/Mwm6nxBNoTPp/uP7PlXld+hhg7lDtHLdHFnNclywGYM9BRC7Ohd4JhwuHg+vmOUGfd3NhVA==}
-    dev: false
 
   /wrappy/1.0.2:
     resolution: {integrity: sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=}

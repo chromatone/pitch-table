@@ -1,6 +1,6 @@
 <template lang="pug">
 .flex.p-4
-  .p-4.bg-green-400(@click="startContext()") Start
+  // .p-4.bg-green-400(@click="startContext()") Start
   control-switch(
     label="letters",
     :state="state.show.letters",
@@ -16,7 +16,7 @@
     :state="state.show.bpm",
     @click="state.show.bpm = !state.show.bpm"
   )
-  slider.mt-6.w-xs.ml-6(:min="-6",:max="9",v-model="state.octaveRange")
+
 </template>
 
 <script setup>
