@@ -1,5 +1,5 @@
 <template lang="pug">
-.flex
+.bg-gray-100(class="dark:(bg-gray-700 text-gray-100)")
   .flex.flex-col.w-full.flex-auto
     header-row
     control-row
@@ -16,6 +16,7 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 
 .scroll-bar {

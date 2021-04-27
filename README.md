@@ -8,6 +8,9 @@ A video of me live coding this project is this playlist: https://www.youtube.com
 
 ### Road map
 
+- Completed:
+  - [x] stop sound on cell before unmounting it
+  - [x] dark mode switch and basic styles
 - Mobile:
   - [ ] fix: iOS - no sound 
   - [ ] fix: Android - glitches

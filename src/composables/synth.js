@@ -1,4 +1,11 @@
-import { defineProps, computed, ref, reactive, watch } from 'vue'
+import {
+  defineProps,
+  computed,
+  ref,
+  reactive,
+  watch,
+  onBeforeUnmount,
+} from 'vue'
 import { Oscillator, context, start, gainToDb, PanVol, MonoSynth } from 'tone'
 import { calcFreq } from '@composables/calculations.js'
 
@@ -25,6 +32,10 @@ export function useSynth(pitch, octave) {
       synth.oscillator.frequency.value = freq
       return freq
     }),
+  })
+
+  onBeforeUnmount(() => {
+    synth.triggerRelease()
   })
 
   watch(

@@ -1,7 +1,7 @@
 <template lang="pug">
 .flex.text-2xl.text-center.cursor-pointer
-  .btn.bg-gray-300(@click="decOctave(top)") &ndash;
-  .btn.bg-gray-50(@click="incOctave(top)") +
+  .btn.bg-gray-300(class="dark:bg-gray-900",@click="decOctave(top)") &ndash;
+  .btn.bg-gray-50(class="dark:bg-gray-500",@click="incOctave(top)") +
 </template>
 
 <script setup>

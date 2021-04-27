@@ -8,11 +8,11 @@
   }`, 
   :class="{ active: synth.active }")
   .absolute.w-full.h-full.top-0.left-0.bottom-0(v-show="synth.vol > 0")
-    .absolute.border-t.bg-gray-700.bg-opacity-50.w-full.bottom-0(
+    .volume(
       :style="{ height: synth.vol + '%' }"
     ) 
   .absolute.h-full.top-0.left-0.right-0.text-center(v-show="synth.pan != 50")
-    .pan.absolute.bg-gray-100.bg-opacity-50.h-full.m-auto(
+    .pan.absolute.bg-gray-100.h-full.m-auto(
       :style="{ left: synth.pan + '%' }"
     ) 
 
@@ -95,19 +95,19 @@ const textColor = computed(() => {
 
 <style  scoped>
 .cell {
-  @apply relative flex flex-col p-1 flex-1 cursor-pointer select-none opacity-70 hover:opacity-100;
+  @apply relative flex flex-col p-1 flex-1 cursor-pointer select-none;
   transition: all 100ms ease;
   min-width: 2em;
   min-height: 4em;
 }
 .cell.active,
 .cell:active {
-  @apply opacity-90;
+  @apply;
 }
 
 .volume {
-  width: 6px;
-  @apply flex items-end;
+  mix-blend-mode: multiply;
+  @apply absolute border-t bg-gray-500 w-full bottom-0;
 }
 
 .pan {

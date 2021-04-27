@@ -20,7 +20,9 @@ export default defineConfig({
       // relative paths to the directory to search for components.
       dirs: ['src/components'],
       //for icons
-      customComponentResolvers: ViteIconsResolver(),
+      customComponentResolvers: ViteIconsResolver({
+        componentPrefix: '',
+      }),
       // valid file extensions for components.
       extensions: ['vue'],
       // search for subdirectories

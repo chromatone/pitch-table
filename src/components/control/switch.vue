@@ -15,6 +15,8 @@ const props = defineProps({
 
 <style  scoped>
 .button {
-  @apply flex py-1 px-2 text-sm mr-2 shadow bg-gray-300 rounded-xl cursor-pointer select-none hover:shadow-lg transition;
+  @apply flex py-1 px-2 text-xs font-bold mr-2 shadow bg-gray-300 rounded-xl cursor-pointer select-none transition
+  dark:(bg-gray-800)  
+  hover:shadow-lg;
 }
 </style>

@@ -1,6 +1,7 @@
 <template lang="pug">
 .p-4.flex 
   a.text-xl(href="https://chromatone.center", target="_blank") Chromatone
+  header-dark-mode
   .flex-auto
   a(href="https://table.chromatone.center/v2/") old version
 
