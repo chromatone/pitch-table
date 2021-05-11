@@ -1,15 +1,15 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@iconify/json': ^1.1.333
+  '@iconify/json': ^1.1.334
   '@vitejs/plugin-vue': ^1.2.2
   '@vue/compiler-sfc': ^3.0.11
   '@vueuse/core': ^4.9.0
   '@vueuse/gesture': ^1.0.0
   pug: ^3.0.2
-  tone: ^14.8.17
+  tone: ^14.8.19
   unmute-ios-audio: ^3.3.0
-  vite: ^2.2.2
+  vite: ^2.2.3
   vite-aliases: ^0.6.2
   vite-plugin-components: 0.8.4
   vite-plugin-icons: ^0.5.0
@@ -20,21 +20,21 @@ specifiers:
 dependencies:
   '@vueuse/core': 4.9.0_vue@3.0.11
   '@vueuse/gesture': 1.0.0_vue@3.0.11
-  tone: 14.8.17
+  tone: 14.8.19
   unmute-ios-audio: 3.3.0
   vue: 3.0.11
 
 devDependencies:
-  '@iconify/json': 1.1.333
+  '@iconify/json': 1.1.334
   '@vitejs/plugin-vue': 1.2.2_@vue+compiler-sfc@3.0.11
   '@vue/compiler-sfc': 3.0.11_vue@3.0.11
   pug: 3.0.2
-  vite: 2.2.2
+  vite: 2.2.3
   vite-aliases: 0.6.2
-  vite-plugin-components: 0.8.4_vite@2.2.2
-  vite-plugin-icons: 0.5.0_20009d0eddc2c90b363bf36479e3ca7d
-  vite-plugin-voie: 0.7.3_vite@2.2.2+vue@3.0.11
-  vite-plugin-windicss: 0.15.7_vite@2.2.2
+  vite-plugin-components: 0.8.4_vite@2.2.3
+  vite-plugin-icons: 0.5.0_b7724332fb3b31bee2f7346035970a28
+  vite-plugin-voie: 0.7.3_vite@2.2.3+vue@3.0.11
+  vite-plugin-windicss: 0.15.7_vite@2.2.3
 
 packages:
 
@@ -62,8 +62,8 @@ packages:
     resolution: {integrity: sha512-LFelJDOLZ6JHlmlAkgrvmcu4hpNPB91KYcr4f60D/exzU1eNOb4/KCVHIydGHIQFaOacIOD+Xy+B7P1z812cZg==}
     dev: true
 
-  /@iconify/json/1.1.333:
-    resolution: {integrity: sha512-JcYRNdt9UUBGsH3U5P/Idw9jzZoDCokVyTUGfweHNRuH4r2xR4oVJgH/CyijdUd0BGZ4ztiO2iVBC1sysk67Yg==}
+  /@iconify/json/1.1.334:
+    resolution: {integrity: sha512-+tuPagrHexJqFlgCuAQ50soLgolD2JLUk/44Pqquft1x05lojl8whZ9bJt/XiC3A1575MMUAeXWV704ZvxtmLA==}
     dev: true
 
   /@nodelib/fs.scandir/2.1.4:
@@ -995,8 +995,8 @@ packages:
     resolution: {integrity: sha1-zCAOqyYT9BZtJ/+a/HylbUnfbrQ=}
     dev: true
 
-  /tone/14.8.17:
-    resolution: {integrity: sha512-xdn0FDWo0U4jEkZcZDDS028DA+/XVdW4q3i9ttTq/C8lqGsDPV+Bcd2/+o0jJgGzQkntaCOaI/NeQ4RdBkg3IQ==}
+  /tone/14.8.19:
+    resolution: {integrity: sha512-0iVlwtrGUzDycteX2g5dzQvSFI7IbAlnl9ImanJ1XRCQGI76OdHhMr5WlNa2Y7XaM1CgVlNoMiTjoMFs4D0bhA==}
     dependencies:
       standardized-audio-context: 25.1.15
       tslib: 2.2.0
@@ -1026,7 +1026,7 @@ packages:
       vite: 2.2.1
     dev: true
 
-  /vite-plugin-components/0.8.4_vite@2.2.2:
+  /vite-plugin-components/0.8.4_vite@2.2.3:
     resolution: {integrity: sha512-h6/FNBKBXc4TIcHxnFYxa4+aBGDZusqp/6Ra3LBvwolwFuX6k8qPsBbXkBP0I+UwOkyHw9iU2xJ4rdYBGyN+0Q==}
     peerDependencies:
       vite: ^2.0.0-beta.69
@@ -1035,25 +1035,25 @@ packages:
       debug: 4.3.2
       fast-glob: 3.2.5
       minimatch: 3.0.4
-      vite: 2.2.2
+      vite: 2.2.3
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite-plugin-icons/0.5.0_20009d0eddc2c90b363bf36479e3ca7d:
+  /vite-plugin-icons/0.5.0_b7724332fb3b31bee2f7346035970a28:
     resolution: {integrity: sha512-YsnoYixkp0HVIx6SvQWTyXXiWBCfc9gtKx3iqyPmN4fsE5hf7NvPp1LKiIazilP+zRUvHEyNeEbH4y6wUX8jMw==}
     peerDependencies:
       '@iconify/json': '*'
       '@vue/compiler-sfc': ^3.0.2
       vue-template-compiler: ^2.6.12
     dependencies:
-      '@iconify/json': 1.1.333
+      '@iconify/json': 1.1.334
       '@iconify/json-tools': 1.0.10
       '@vue/compiler-sfc': 3.0.11_vue@3.0.11
       vue-template-es2015-compiler: 1.9.1
     dev: true
 
-  /vite-plugin-voie/0.7.3_vite@2.2.2+vue@3.0.11:
+  /vite-plugin-voie/0.7.3_vite@2.2.3+vue@3.0.11:
     resolution: {integrity: sha512-OwAwziXPb8ywKHXfd9E1UXsEF2rRi4Dgb3F020s2lLWdtuY84xQH4JK84XwytFeht3TsexmJpVPHg2y17QdltQ==}
     peerDependencies:
       vite: ^2.0.0-beta.3
@@ -1061,13 +1061,13 @@ packages:
     dependencies:
       fast-glob: 3.2.5
       glob-to-regexp: 0.4.1
-      vite: 2.2.2
+      vite: 2.2.3
       voie-pages: 0.4.0_vue@3.0.11
     transitivePeerDependencies:
       - vue
     dev: true
 
-  /vite-plugin-windicss/0.15.7_vite@2.2.2:
+  /vite-plugin-windicss/0.15.7_vite@2.2.3:
     resolution: {integrity: sha512-RYASJYA6l2p3MgQ6M6GU44zP0iC5cBkuTJhhrmHaRREleL9fNpblBwdS0lbvcr5Q4LT6AGpmmTlF50iIwo3JkQ==}
     peerDependencies:
       vite: ^2.0.1
@@ -1075,7 +1075,7 @@ packages:
       '@windicss/plugin-utils': 0.15.7
       chalk: 4.1.1
       debug: 4.3.2
-      vite: 2.2.2
+      vite: 2.2.3
       windicss: 2.5.14
     transitivePeerDependencies:
       - supports-color
@@ -1094,8 +1094,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vite/2.2.2:
-    resolution: {integrity: sha512-Y0IMdu+YuKsisJPk6NaEwEQC7FFfLQSN97ZTE4gvrELrk8dGjTFslhNCG8wkdzMSLCzfOdpCMT8cPXAhqzkPfg==}
+  /vite/2.2.3:
+    resolution: {integrity: sha512-PtjyBL4GtACM+uT5q5hi2+AlMBbb6YI2b2bam6QI8ZdZt4FezseF0yZHQx0G+b3po9jIJ/GS5N9gc5Yq9Rue7g==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
