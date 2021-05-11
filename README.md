@@ -19,7 +19,7 @@ A video of me live coding this project is this playlist: https://www.youtube.com
   - [ ] fix: noisy tones
 - Features:
   - [ ] Synth controls
-    - [ ] waveform
+    - [ ] osc waveform
     - [ ] filter
     - [ ] ADSR
   - [ ] Scroll controls (?)
