@@ -1,0 +1,33 @@
+{
+	"id": "chromatone-pitch-table",
+	"name": "Pitch Table",
+	"short_name": "Pitch Table",
+	"description": "An expandable table of all possible notes to make sounds and rhythms",
+	"start_url": "/",
+	"background_color": "#999",
+	"theme_color": "#999",
+	"display": "standalone",
+	"orientation": "any",
+	"display_override": ["window-controls-overlay", "minimal-ui", "standalone"],
+	"handle_links": "preferred",
+	"prefer_related_applications": false,
+	"categories": ["music", "audio", "tools"],
+	"icons": [
+		{
+			"src": "./logo.svg",
+			"sizes": "any",
+			"type": "image/svg+xml",
+			"purpose": "any"
+		},
+		{
+			"src": "./logo.png",
+			"sizes": "1600x1600",
+			"type": "image/png",
+			"purpose": "any"
+		}
+	],
+
+	"launch_handler": {
+		"client_mode": ["focus-existing", "auto"]
+	}
+}
