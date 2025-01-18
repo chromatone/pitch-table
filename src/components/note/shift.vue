@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { state } from '@store/state.js'
+import { state } from '~/store/state.js'
 import { defineProps } from 'vue'
 
 const props = defineProps({

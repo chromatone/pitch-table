@@ -7,7 +7,7 @@
 
 <script setup>
 import { defineProps, computed } from 'vue'
-import { state } from '@store/state'
+import { state } from '~/store/state'
 
 const props = defineProps({
   name: {
@@ -42,5 +42,4 @@ function round(value) {
 
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -7,10 +7,9 @@
 </template>
 
 <script setup>
-import { notes } from '@store/theory.js'
-import { state } from '@store/state.js'
+import { notes } from '~/store/theory.js'
+import { state } from '~/store/state.js'
 
 </script>
 
-<style  scoped>
-</style>
+<style scoped></style>

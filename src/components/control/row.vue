@@ -21,7 +21,7 @@
 
 <script setup>
 
-import { state } from '@store/state.js'
+import { state } from '~/store/state.js'
 import { context, start } from 'tone'
 
 function startContext() {
@@ -32,5 +32,4 @@ function startContext() {
 
 </script>
 
-<style scoped >
-</style>
+<style scoped></style>

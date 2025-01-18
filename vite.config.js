@@ -1,28 +1,26 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import ViteComponents from 'vite-plugin-components'
 import WindiCSS from 'vite-plugin-windicss'
-import ViteIcons, { ViteIconsResolver } from 'vite-plugin-icons'
-import { getAliases } from 'vite-aliases'
-
-const aliases = getAliases()
+import Icons from 'unplugin-icons/vite'
+import { ViteAliases } from 'vite-aliases'
+import { viteSingleFile } from "vite-plugin-singlefile"
+import Components from 'unplugin-vue-components/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  resolve: {
-    alias: aliases,
-  },
+
   plugins: [
     vue(),
+    ViteAliases({
+
+    }),
+    viteSingleFile(),
     WindiCSS(),
-    ViteIcons(),
-    ViteComponents({
+    Icons({ /* options */ }),
+    Components({
       // relative paths to the directory to search for components.
       dirs: ['src/components'],
-      //for icons
-      customComponentResolvers: ViteIconsResolver({
-        componentPrefix: '',
-      }),
+
       // valid file extensions for components.
       extensions: ['vue'],
       // search for subdirectories

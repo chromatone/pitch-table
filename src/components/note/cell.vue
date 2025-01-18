@@ -22,9 +22,9 @@
 <script setup>
 import { defineProps, computed, ref, reactive, watch } from 'vue'
 import { Oscillator, context, start, gainToDb, PanVol, MonoSynth } from 'tone'
-import { state } from '@store/state.js'
-import { calcFreq } from '@composables/calculations.js'
-import { useSynth } from '@composables/synth.js'
+import { state } from '~/store/state.js'
+import { calcFreq } from '~/composables/calculations.js'
+import { useSynth } from '~/composables/synth.js'
 
 const props = defineProps({
   note: Object,
@@ -93,13 +93,14 @@ const textColor = computed(() => {
 
 </script>
 
-<style  scoped>
+<style scoped>
 .cell {
   @apply relative flex flex-col p-1 flex-1 cursor-pointer select-none;
   transition: all 100ms ease;
   min-width: 2em;
   min-height: 4em;
 }
+
 .cell.active,
 .cell:active {
   @apply;

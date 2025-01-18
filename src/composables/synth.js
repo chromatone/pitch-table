@@ -7,7 +7,7 @@ import {
   onBeforeUnmount,
 } from 'vue'
 import { Oscillator, context, start, gainToDb, PanVol, MonoSynth } from 'tone'
-import { calcFreq } from '@composables/calculations.js'
+import { calcFreq } from '~/composables/calculations.js'
 
 export function useSynth(pitch, octave) {
   const panVol = new PanVol(0, -Infinity).toDestination()
