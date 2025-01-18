@@ -14,6 +14,7 @@ export default defineConfig({
     ViteAliases({
 
     }),
+    viteBuildScript(),
     viteSingleFile(),
     WindiCSS(),
     Icons({ /* options */ }),
