@@ -1,12 +1,10 @@
-const CACHE_NAME = 'chromatone-random-jam-v.0.2.0';
+const CACHE_NAME = 'chromatone-pitch-table-v.0.2.0';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
   '/logo.svg',
-  '102_logo.svg'
 ];
 
-// Install Service Worker
 self.addEventListener('install', (event) => {
   self.skipWaiting()
   event.waitUntil(
@@ -16,14 +14,13 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// Activate Service Worker
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
           if (cacheName !== CACHE_NAME) {
-            return caches.delete(cacheName); // Clean up old caches
+            return caches.delete(cacheName);
           }
         })
       );
@@ -32,11 +29,9 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// Fetch assets (serve from cache or network)
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
-      // Return cached response if available, otherwise fetch from network
       return cachedResponse || fetch(event.request);
     })
   );

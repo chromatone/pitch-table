@@ -26,7 +26,14 @@
 			"purpose": "any"
 		}
 	],
-
+	"screenshots": [
+		{
+			"src": "./screen.png",
+			"sizes": "800x800",
+			"type": "image/png",
+			"purpose": "any"
+		}
+	],
 	"launch_handler": {
 		"client_mode": ["focus-existing", "auto"]
 	}
