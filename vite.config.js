@@ -1,37 +1,39 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import WindiCSS from 'vite-plugin-windicss'
 import Icons from 'unplugin-icons/vite'
-import { ViteAliases } from 'vite-aliases'
 import { viteSingleFile } from "vite-plugin-singlefile"
-import Components from 'unplugin-vue-components/vite'
+import UnoCSS from 'unocss/vite'
 
-// https://vitejs.dev/config/
+import {
+  transformerDirectives,
+  presetIcons,
+  presetUno,
+  extractorSplit,
+  presetTypography
+} from "unocss";
+import extractorPug from "@unocss/extractor-pug";
+
+
 export default defineConfig({
-
   plugins: [
     vue(),
-    ViteAliases({
-
-    }),
     viteBuildScript(),
     viteSingleFile(),
-    WindiCSS(),
     Icons({ /* options */ }),
-    Components({
-      // relative paths to the directory to search for components.
-      dirs: ['src/components'],
-
-      // valid file extensions for components.
-      extensions: ['vue'],
-      // search for subdirectories
-      deep: true,
-
-      // Allow subdirectories as namespace prefix for components.
-      directoryAsNamespace: true,
-      // Subdirectory paths for ignoring namespace prefixes
-      // works when `directoryAsNamespace: true`
-      globalNamespaces: [],
+    UnoCSS({
+      transformers: [transformerDirectives()],
+      presets: [
+        presetIcons({
+          cdn: 'https://esm.sh/',
+          scale: 1.2,
+          extraProperties: {
+            "vertical-align": "middle",
+          },
+        }),
+        presetUno(),
+        presetTypography(),
+      ],
+      extractors: [extractorSplit, extractorPug()],
     }),
   ],
 })

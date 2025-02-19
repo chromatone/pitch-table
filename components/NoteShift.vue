@@ -5,8 +5,7 @@
 </template>
 
 <script setup>
-import { state } from '~/store/state.js'
-import { defineProps } from 'vue'
+import { state } from '../store/state.js'
 
 const props = defineProps({
   top: Boolean,

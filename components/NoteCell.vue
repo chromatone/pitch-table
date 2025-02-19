@@ -1,30 +1,10 @@
-<template lang="pug">
-.cell(
-  v-drag="dragHandler",
-  :drag-options="dragOptions",
-  :style=`{
-    backgroundColor: color,
-    color: textColor
-  }`, 
-  :class="{ active: synth.active }")
-  .absolute.w-full.h-full.top-0.left-0.bottom-0(v-show="synth.vol > 0")
-    .volume(
-      :style="{ height: synth.vol + '%' }"
-    ) 
-  .absolute.h-full.top-0.left-0.right-0.text-center(v-show="synth.pan != 50")
-    .pan.absolute.bg-gray-100.h-full.m-auto(
-      :style="{ left: synth.pan + '%' }"
-    ) 
-
-  note-info(:name="note.name",:hz="synth.freq", :octave="octave")
-</template>
-
 <script setup>
-import { defineProps, computed, ref, reactive, watch } from 'vue'
+import { computed, ref, reactive, watch } from 'vue'
 import { Oscillator, context, start, gainToDb, PanVol, MonoSynth } from 'tone'
-import { state } from '~/store/state.js'
-import { calcFreq } from '~/composables/calculations.js'
-import { useSynth } from '~/composables/synth.js'
+
+import { state } from '../store/state.js'
+import { calcFreq } from '../composables/calculations.js'
+import { useSynth } from '../composables/synth.js'
 
 const props = defineProps({
   note: Object,
@@ -91,11 +71,48 @@ const textColor = computed(() => {
   }
 });
 
+function round(value) {
+  let result
+  if (value > 1e6) {
+    result = (value / 1e6).toFixed(2) + ' M'
+  } else if (value > 1e3) {
+    result = (value / 1e3).toFixed(2) + ' k'
+  } else {
+    result = value.toFixed(2) + ' '
+  }
+  return result
+}
+
 </script>
+
+
+<template lang="pug">
+.cell(
+  v-drag="dragHandler",
+  :drag-options="dragOptions",
+  :style=`{
+    backgroundColor: color,
+    color: textColor
+  }`, 
+  :class="{ active: synth.active }")
+  .absolute.w-full.h-full.top-0.left-0.bottom-0(v-show="synth.vol > 0")
+    .volume(
+      :style="{ height: synth.vol + '%' }"
+    ) 
+  .absolute.h-full.top-0.left-0.right-0.text-center(v-show="synth.pan != 50")
+    .pan.absolute.bg-gray-100.h-full.m-auto(
+      :style="{ left: synth.pan + '%' }"
+    ) 
+
+  .flex.flex-col.text-xs.p-1(v-if="state.show.hz || state.show.bpm || state.show.letters")
+  .text-xl.font-bold(v-if="state.show.letters") {{ note.name }}{{ octave }}
+  .flex.text-xs(v-if="state.show.hz") {{ round(synth.freq) }}hz
+  .flex.text-xs(v-if="state.show.bpm") {{ round(synth.freq*60) }}BPM
+</template>
 
 <style scoped>
 .cell {
-  @apply relative flex flex-col p-1 flex-1 cursor-pointer select-none;
+  @apply relative flex flex-col p-2 flex-1 cursor-pointer select-none;
   transition: all 100ms ease;
   min-width: 2em;
   min-height: 4em;

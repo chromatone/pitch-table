@@ -12,7 +12,17 @@
 
 <body>
   <div id="app"></div>
-  <script type="module" src="/src/main.js"></script>
+  <script type="module">
+    import { createApp } from 'vue'
+    import App from './App.vue'
+    import '@unocss/reset/tailwind.css'
+    import 'virtual:uno.css'
+
+    import { GesturePlugin } from '@vueuse/gesture'
+    const app = createApp(App)
+    app.use(GesturePlugin)
+    app.mount('#app')
+  </script>
 </body>
 
 </html>
