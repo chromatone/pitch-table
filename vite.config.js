@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import Icons from 'unplugin-icons/vite'
 import { viteSingleFile } from "vite-plugin-singlefile"
 import UnoCSS from 'unocss/vite'
 
@@ -19,7 +18,6 @@ export default defineConfig({
     vue(),
     viteBuildScript(),
     viteSingleFile(),
-    Icons({ /* options */ }),
     UnoCSS({
       transformers: [transformerDirectives()],
       presets: [
